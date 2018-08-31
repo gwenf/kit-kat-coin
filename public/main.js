@@ -1,24 +1,28 @@
-// front end javascript goes here
+// front-end
 var app = new Vue({
   el: '#app',
   data: {
     greeting: 'Welcome to your Vue.js app!'
   },
   methods: {
-    send: function (to, amount) {
+    send: function(to, amount) {
       console.log(to, amount)
+      // sendTx(tx)
+    },
+    getState: function() {
+      return getState()
+    },
+    getBalance: function(address) {
+      console.log(address)
     }
   }
 })
 
-
 async function main() {
-  // get blockchain state like:
   let state = await getState()
   console.log('current blockchain state:')
   console.log(state)
 
-  // send a transaction like:
   let result = await sendTx({ foo: 'bar' })
   console.log('result of submitting a transaction:')
   console.log(result)
@@ -26,10 +30,7 @@ async function main() {
 
 main()
 
-
-
-// some helper functions for ya:
-
+// helper functions
 function getState() {
   return fetch('/state').then(res=>res.json())
 }

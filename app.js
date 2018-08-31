@@ -1,5 +1,6 @@
 let lotion = require('lotion')
 let shea = require('shea')
+let coins = require('coins')
 
 let app = lotion({
   initialState: {
@@ -7,6 +8,13 @@ let app = lotion({
   },
   devMode: process.env.PRODUCTION !== 'true'
 })
+
+app.use(coins({
+  name: 'kitkatcoin',
+  initialBalances: {
+    'EwgdQPd6SDubZzRajbJcMTK6pb8RenLMz': 1000000
+  }
+}))
 
 app.use(function (state, tx, chainInfo) {
   // handle transactions here
