@@ -1,0 +1,24 @@
+{
+  "name": "lotion-shea-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node app.js",
+    "validator": "PRODUCTION=true node app.js",
+    "lint": "./node_modules/.bin/eslint ./public/main.js",
+    "fix": "./node_modules/.bin/eslint ./public/main.js --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lotion": "0.1.19",
+    "shea": "0.0.13"
+  },
+  "devDependencies": {
+    "eslint": "5.4.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.14.0"
+  }
+}
