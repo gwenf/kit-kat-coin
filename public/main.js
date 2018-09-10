@@ -12,6 +12,9 @@ var app = new Vue({
     getState: function() {
       return getState()
     },
+    createNewAddress() {
+      
+    },
     getBalance: function(address) {
       console.log(address)
     }

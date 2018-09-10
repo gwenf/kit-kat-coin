@@ -11,11 +11,18 @@
 <body>
   <div id="app" class="container">
     <div class="columns">
+      <div class="field">
+        <p class="control">
+          <button class="button is-success" @click="send">
+            Create New Address
+          </button>
+        </p>
+      </div>
       <div class="column is-6 is-offset-one-quarter">
-        Account Address
+        Check Balance:
         <div class="field has-addons">
           <p class="control">
-            <input class="input" type="text" placeholder="Private key">
+            <input class="input" type="text" placeholder="Account Address">
           </p>
           <p class="control">
             <a class="button is-static">
