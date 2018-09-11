@@ -14,6 +14,10 @@
   <div id="app" class="container">
     <div class="columns">
       <div class="column is-6 is-offset-one-quarter">
+        <header>
+          <h2>KitKatCoin Wallet</h2>
+          <p><i>Each address created is initialized with 1,000 KKC :)</i></p>
+        </header>
         <div class="field">
           <p class="control">
             <button class="button is-success" @click="createNewAddress">
@@ -50,10 +54,10 @@
     </div>
     <div class="columns">
       <div class="column is-6 is-offset-one-quarter">
-        Check Balance:
+        Check Balance (paste in public key and press enter):
         <div class="field has-addons">
           <p class="control">
-            <input v-model="accountAddress" class="input" type="text" placeholder="Account Address">
+            <input @keyup.enter="getBalance" v-model="accountAddress" class="input" type="text" placeholder="Account Address (public key)">
           </p>
           <p class="control">
             <a class="button is-static">

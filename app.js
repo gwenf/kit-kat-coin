@@ -15,8 +15,7 @@ let app = lotion({
 })
 
 app.use(function (state, tx, chainInfo) {
-  console.log(state, tx)
-
+  console.log('tx', tx)
   if (tx.type === 'SEND') {
     if (!state.balances[tx.sender] || !state.balances[tx.receiver]) {
       // TODO: send error back that address must be created/initialized first
@@ -37,6 +36,7 @@ app.use(function (state, tx, chainInfo) {
     state.balances[tx.sender] = senderBalance - tx.amount
     state.balances[tx.receiver] = receiverBalance + tx.amount
   } else if (tx.type === 'INIT') {
+    console.log('info', tx.sender)
     state.totalSupply -= 1000
     state.balances[tx.sender] = 1000
   }

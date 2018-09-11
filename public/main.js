@@ -45,7 +45,7 @@ var app = new Vue({
 
       axios.post(`${API_URL}/txs`, {
         type: 'INIT',
-        sender: this.accountAddress
+        sender: pubKey
       })
       .then(function (res) {
         console.log(res);
@@ -54,8 +54,9 @@ var app = new Vue({
         console.log(err);
       });
     },
-    getBalance: function(address) {
-      console.log(address)
+    getBalance: async function() {
+      const state = await axios.get('/state')
+      this.addressBalance = state.data.balances[this.accountAddress]
     }
   }
 })
