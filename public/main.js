@@ -7,6 +7,7 @@ var app = new Vue({
   el: '#app',
   data: function() {
     return {
+      fields: [ 'show_keys' ],
       addresses: [],
       accountAddress: '',
       addressTo: '',
@@ -16,10 +17,14 @@ var app = new Vue({
   },
   methods: {
     send: function() {
+      // should I have a confirmation box for sends?
       console.log(this.addressTo, this.amountTo)
-      // sendTx(tx)
+
       axios.post(`${API_URL}/txs`, {
-        firstName: 'Gwen'
+        type: 'SEND',
+        amount: this.amountTo,
+        receiver: this.addressTo,
+        sender: this.accountAddress
       })
       .then(function (res) {
         console.log(res);
@@ -32,27 +37,25 @@ var app = new Vue({
       return fetch('/state').then(res=>res.json())
     },
     createNewAddress: function() {
-      const privKey = utils.generatePrivKey()
-      const pubKey = utils.getPubKey(privKey)
+      const { privKey, pubKey } = utils.generateKeyPair()
       this.addresses.push({
         privKey,
         pubKey
       })
+
+      axios.post(`${API_URL}/txs`, {
+        type: 'INIT',
+        sender: this.accountAddress
+      })
+      .then(function (res) {
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     },
     getBalance: function(address) {
       console.log(address)
     }
   }
 })
-
-// helper functions
-// function sendTx(tx) {
-//   return fetch('/txs', {
-//     headers: {
-//       'Accept': 'application/json',
-//       'Content-Type': 'application/json'
-//     },
-//     method: 'post',
-//     body: JSON.stringify(tx)
-//   }).then(res => res.json())
-// }

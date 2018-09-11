@@ -1,29 +1,26 @@
-const secp = require('secp256k1')
-const { randomBytes } = require('crypto')
+var EC = require('elliptic').ec
+var ec = new EC('secp256k1')
 
-function generatePrivKey() {
-    let privKey
-    do {
-        privKey = randomBytes(32)
-    } while (!secp256k1.privateKeyVerify(privKey))
-
-    return privKey.toString('hex')
+function generateKeyPair() {
+    var key = ec.genKeyPair()
+    var privKey = key.priv.toString('hex')
+    var pubKey = key.getPublic('hex')
+    return {
+        pubKey,
+        privKey
+    }
 }
 
-// function getPrivKey() {
-//     return Buffer.from(fs.readFileSync(path, 'utf8'), 'hex')
-// }
+function verify() {
 
-function getPubKey(privKey) {
-    return secp.publicKeyCreate(privKey).toString('hex')
 }
 
-function sendCoins() {
+function sign() {
 
 }
 
 export default {
-    generatePrivKey,
-    getPubKey,
-    sendCoins
+    generateKeyPair,
+    verify,
+    sign
 }

@@ -26,16 +26,17 @@ app.use(function (state, tx, chainInfo) {
     let senderBalance = state.balances[tx.sender]
     let receiverBalance = state.balances[tx.receiver]
 
-    if (!verifyTx(tx) || tx.sender === tx.receiver) {
-      return
-    }
+    // TODO: transaction needs to be properly verified
+    // if (!verifyTx(tx) || tx.sender === tx.receiver) {
+    //   return
+    // }
     if (!Number.isInteger(tx.amount) || tx.amount > senderBalance) {
         return
     }
 
     state.balances[tx.sender] = senderBalance - tx.amount
     state.balances[tx.receiver] = receiverBalance + tx.amount
-  } else if (tx.type === 'init') {
+  } else if (tx.type === 'INIT') {
     state.totalSupply -= 1000
     state.balances[tx.sender] = 1000
   }
