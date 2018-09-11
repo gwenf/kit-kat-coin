@@ -1,9 +1,6 @@
 let lotion = require('lotion')
 let shea = require('shea')
 
-let init = require('./src/init')
-init()
-
 let app = lotion({
   initialState: {
     symbol: 'KKC',
@@ -15,7 +12,6 @@ let app = lotion({
 })
 
 app.use(function (state, tx, chainInfo) {
-  console.log('tx', tx)
   if (tx.type === 'SEND') {
     if (!state.balances[tx.sender] || !state.balances[tx.receiver]) {
       // TODO: send error back that address must be created/initialized first
@@ -24,19 +20,19 @@ app.use(function (state, tx, chainInfo) {
 
     let senderBalance = state.balances[tx.sender]
     let receiverBalance = state.balances[tx.receiver]
+    const amount = parseInt(tx.amount, 10)
 
     // TODO: transaction needs to be properly verified
     // if (!verifyTx(tx) || tx.sender === tx.receiver) {
     //   return
     // }
-    if (!Number.isInteger(tx.amount) || tx.amount > senderBalance) {
-        return
+    if (!Number.isInteger(amount) || tx.amount > senderBalance) {
+      return
     }
 
-    state.balances[tx.sender] = senderBalance - tx.amount
-    state.balances[tx.receiver] = receiverBalance + tx.amount
+    state.balances[tx.sender] = senderBalance - amount
+    state.balances[tx.receiver] = receiverBalance + amount
   } else if (tx.type === 'INIT') {
-    console.log('info', tx.sender)
     state.totalSupply -= 1000
     state.balances[tx.sender] = 1000
   }

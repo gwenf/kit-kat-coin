@@ -29,7 +29,7 @@
             All Addresses:
         </div>
         <b-table striped bordered hover :items="addresses" :fields="fields">
-          <template slot="show_keys" slot-scope="row">
+          <template slot="keys" slot-scope="row">
             <!-- we use @click.stop here to prevent emitting of a 'row-clicked' event  -->
             Account #{{ row.index + 1 }}
             <b-button size="sm" @click.stop="row.toggleDetails" class="mr-2">

@@ -7,7 +7,7 @@ var app = new Vue({
   el: '#app',
   data: function() {
     return {
-      fields: [ 'show_keys' ],
+      fields: [ 'keys' ],
       addresses: [],
       accountAddress: '',
       addressTo: '',
@@ -16,22 +16,21 @@ var app = new Vue({
     }
   },
   methods: {
-    send: function() {
-      // should I have a confirmation box for sends?
-      console.log(this.addressTo, this.amountTo)
-
-      axios.post(`${API_URL}/txs`, {
+    send: async function() {
+      // TODO: add confirm for sends
+      // TODO: move these api calls to vuex
+      await axios.post(`${API_URL}/txs`, {
         type: 'SEND',
         amount: this.amountTo,
         receiver: this.addressTo,
         sender: this.accountAddress
       })
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
+
+      this.amountTo = 0
+      this.addressTo = ''
+      window.alert('Transaction was successful!')
+
+      this.getBalance()
     },
     getState: function() {
       return fetch('/state').then(res=>res.json())
