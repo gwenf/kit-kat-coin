@@ -8,6 +8,7 @@ var app = new Vue({
   data: function() {
     return {
       addresses: [],
+      accountAddress: '',
       addressTo: '',
       amountTo: 0,
       addressBalance: 0
