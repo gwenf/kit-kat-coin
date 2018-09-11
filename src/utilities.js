@@ -1,6 +1,7 @@
 const secp = require('secp256k1')
+const { randomBytes } = require('crypto')
 
-function generatePrivateKey() {
+function generatePrivKey() {
     let privKey
     do {
         privKey = randomBytes(32)
@@ -8,6 +9,10 @@ function generatePrivateKey() {
 
     return privKey.toString('hex')
 }
+
+// function getPrivKey() {
+//     return Buffer.from(fs.readFileSync(path, 'utf8'), 'hex')
+// }
 
 function getPubKey(privKey) {
     return secp.publicKeyCreate(privKey).toString('hex')
@@ -17,8 +22,8 @@ function sendCoins() {
 
 }
 
-module.exports = {
-    generatePrivateKey,
+export default {
+    generatePrivKey,
     getPubKey,
     sendCoins
 }

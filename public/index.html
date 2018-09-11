@@ -11,18 +11,27 @@
 <body>
   <div id="app" class="container">
     <div class="columns">
-      <div class="field">
-        <p class="control">
-          <button class="button is-success" @click="send">
-            Create New Address
-          </button>
-        </p>
+      <div class="column is-6 is-offset-one-quarter">
+        <div class="field">
+          <p class="control">
+            <button class="button is-success" @click="createNewAddress">
+              Create New Address
+            </button>
+          </p>
+        </div>
       </div>
+      <div class="column is-6 is-offset-one-quarter">
+        <div class="field">
+          Addresses:
+        </div>
+      </div>
+    </div>
+    <div class="columns">
       <div class="column is-6 is-offset-one-quarter">
         Check Balance:
         <div class="field has-addons">
           <p class="control">
-            <input class="input" type="text" placeholder="Account Address">
+            <input v-model="addressBalance" class="input" type="text" placeholder="Account Address">
           </p>
           <p class="control">
             <a class="button is-static">
@@ -63,6 +72,6 @@
   </div>
   
   <script src="https://unpkg.com/vue"></script>
-  <script src="main.js"></script>
+  <script src="main.bundle.js"></script>
 </body>
 </html>
