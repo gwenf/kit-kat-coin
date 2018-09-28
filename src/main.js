@@ -1,9 +1,12 @@
+import Vue from 'vue'
 import axios from 'axios'
-import utils from '../src/utilities'
+import utils from './utilities'
 
 const API_URL = 'http://localhost:3000'
 
-var app = new Vue({
+// importing Vue into this file and exporting this object only
+// for testing purposed
+export default new Vue({
   el: '#app',
   data: function() {
     return {
