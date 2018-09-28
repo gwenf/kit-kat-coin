@@ -92,7 +92,7 @@ import utils from '../utilities'
 const API_URL = 'http://localhost:3000'
 
 export default {
-  el: '#app',
+  name: 'wallet',
   data: function() {
     return {
       fields: [ 'keys' ],

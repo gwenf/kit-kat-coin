@@ -1,5 +1,6 @@
+import '@babel/polyfill'
+
 import Vue from 'vue'
-import 'babel-polyfill'
 import App from './App.vue'
 import BootstrapVue from 'bootstrap-vue'
 

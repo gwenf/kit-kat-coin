@@ -3,6 +3,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   mode: 'development',
+  devtool: '#eval-source-map',
   entry: {
     index: './src/index.js'
   },
@@ -35,7 +36,20 @@ module.exports = {
         ]
       },
       {test: /\.css?$/, loaders: ['style-loader', 'css-loader', 'sass-loader']}
+      // {
+      //   test: /\.(png|jpg|gif|svg)$/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     name: '[name].[ext]?[hash]'
+      //   }
+      // }
     ]
+  },
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, 'src')
+    }
   },
   plugins: [
     new VueLoaderPlugin()

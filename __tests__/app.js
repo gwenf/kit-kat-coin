@@ -1,9 +1,5 @@
-// import axios from 'axios'
-// import utils from '../src/utilities'
-// import vueApp from '../public/main'
-const vueApp = require('../src/main')
 import { shallowMount } from '@vue/test-utils'
-// const compiler = require('vue-template-compiler')
+import Wallet from '@/components/Wallet.vue'
 
 // create addresses
 // check balance
@@ -12,7 +8,7 @@ import { shallowMount } from '@vue/test-utils'
 
 test('create addresses functionality works', () => {
   // console.log(compiler.compile(vueApp))
-  const wrapper = shallowMount(vueApp)
+  const wrapper = shallowMount(Wallet)
   console.log(wrapper)
   expect(3).toBe(3)
 })
