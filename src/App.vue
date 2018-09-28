@@ -1,6 +1,7 @@
 <template>
   <div id="app">
 
+    Hello there
     <wallet />
 
   </div>
