@@ -2,8 +2,8 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
+  mode: 'development',
   entry: {
-    // vue: 'vue',
     index: './src/index.js'
   },
   output: {
@@ -33,7 +33,8 @@ module.exports = {
         include: [
           path.resolve('src')
         ]
-      }
+      },
+      {test: /\.css?$/, loaders: ['style-loader', 'css-loader', 'sass-loader']}
     ]
   },
   plugins: [

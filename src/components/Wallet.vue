@@ -129,6 +129,7 @@ export default {
         privKey,
         pubKey
       })
+      console.log(privKey, pubKey)
 
       axios.post(`${API_URL}/txs`, {
         type: 'INIT',
