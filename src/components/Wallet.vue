@@ -105,18 +105,26 @@ export default {
   },
   methods: {
     send: async function() {
-      // TODO: add confirm for sends
       // TODO: move these api calls to vuex
+      console.log(this.accountAddress, this.addressTo)
       await axios.post(`${API_URL}/txs`, {
         type: 'SEND',
         amount: this.amountTo,
         receiver: this.addressTo,
         sender: this.accountAddress
+      }).then(() => {
+        this.amountTo = 0
+        this.addressTo = ''
+        window.alert('Transaction was successful!')
+      }).catch((err) => {
+        this.amountTo = 0
+        this.addressTo = ''
+        window.alert('Transaction failed:', err)
       })
 
-      this.amountTo = 0
-      this.addressTo = ''
-      window.alert('Transaction was successful!')
+      // this.amountTo = 0
+      // this.addressTo = ''
+      // window.alert('Transaction was successful!')
 
       this.getBalance()
     },
@@ -129,7 +137,6 @@ export default {
         privKey,
         pubKey
       })
-      console.log(privKey, pubKey)
 
       axios.post(`${API_URL}/txs`, {
         type: 'INIT',

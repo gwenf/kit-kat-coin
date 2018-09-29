@@ -14,8 +14,10 @@ let app = lotion({
 app.use(function (state, tx, chainInfo) {
   if (tx.type === 'SEND') {
     if (!state.balances[tx.sender] || !state.balances[tx.receiver]) {
-      // TODO: send error back that address must be created/initialized first
-      return
+      throw new Error('Invalid account address in transaction.')
+    }
+    if (tx.sender === tx.receiver) {
+      throw new Error('Invalid account address in transaction.')
     }
 
     let senderBalance = state.balances[tx.sender]
@@ -26,15 +28,20 @@ app.use(function (state, tx, chainInfo) {
     // if (!verifyTx(tx) || tx.sender === tx.receiver) {
     //   return
     // }
-    if (!Number.isInteger(amount) || tx.amount > senderBalance) {
-      return
+    if (!Number.isInteger(amount) || tx.amount > senderBalance || tx.amount > state.totalSupply) {
+      throw new Error('Invalid amount.')
     }
 
     state.balances[tx.sender] = senderBalance - amount
     state.balances[tx.receiver] = receiverBalance + amount
   } else if (tx.type === 'INIT') {
-    state.totalSupply -= 1000
-    state.balances[tx.sender] = 1000
+    // TODO: check if valid key
+    if (state.totalSupply >= 1000) {
+      state.totalSupply -= 100000
+      state.balances[tx.sender] = 1000
+    } else {
+      throw new Error('Not enough coins left in bank to initialize a new acount with funds.')
+    }
   }
 })
 
