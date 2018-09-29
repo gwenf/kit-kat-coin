@@ -45,6 +45,6 @@ app.useBlock(function (state, chainInfo) {
 app.use(shea('public/'))
 
 let port = process.env.PORT || 3000
-console.log('app listening on port: ', port)
-
-app.listen(port).then(appInfo => {})
+app.listen(port).then(appInfo => {
+  console.log('app listening on port: ', port)
+})

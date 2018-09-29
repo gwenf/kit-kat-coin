@@ -9,7 +9,8 @@
     "validator": "PRODUCTION=true node app.js",
     "lint": "./node_modules/.bin/eslint ./public/main.js",
     "fix": "./node_modules/.bin/eslint ./public/main.js --fix",
-    "test": "jest",
+    "test": "jest --no-cache --runInBand",
+    "test:server": "npm run dev && jest",
     "test:coverage": "jest --coverage"
   },
   "keywords": [],

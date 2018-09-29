@@ -8,7 +8,7 @@
         </header>
         <div class="field">
           <p class="control">
-            <button class="button is-success new-address-button" @click="createNewAddress">
+            <button class="button is-success" @click="createNewAddress" ref="testNewAddressButton">
               Create New Address
             </button>
           </p>
@@ -129,18 +129,17 @@ export default {
         privKey,
         pubKey
       })
-      console.log(privKey, pubKey)
 
       axios.post(`${API_URL}/txs`, {
         type: 'INIT',
         sender: pubKey
       })
       .then(function (res) {
-        console.log(res);
+        console.log(res)
       })
       .catch(function (err) {
-        console.log(err);
-      });
+        console.log(err)
+      })
     },
     getBalance: async function() {
       const state = await axios.get('/state')

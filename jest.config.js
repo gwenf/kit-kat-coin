@@ -1,23 +1,4 @@
-// module.exports = {
-//   verbose: false,
-//   coverageReporters: ['html', 'text-summary'],
-//   moduleFileExtensions: [
-//     'js',
-//     'vue'
-//   ],
-//   moduleNameMapper: {
-//     '^@/(.*)$': '<rootDir>/src/$1'
-//   },
-//   transform: {
-//     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
-//     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
-//   },
-//   snapshotSerializers: [
-//     '<rootDir>/node_modules/jest-serializer-vue'
-//   ]
-// }
 module.exports = {
-  // testEnvironment: 'node',
   moduleFileExtensions: [
     'js',
     'jsx',
@@ -38,5 +19,5 @@ module.exports = {
   testMatch: [
     '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)',
   ],
-  testURL: 'http://localhost/',
+  // testURL: 'http://localhost/',
 }
