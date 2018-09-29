@@ -1,38 +1,42 @@
-module.exports = {
-  "moduleFileExtensions": [
-    "js",
-    "vue"
-  ],
-  "moduleNameMapper": {
-    "^@/(.*)$": "<rootDir>/src/$1"
-  },
-  "transform": {
-    "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-    ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
-    // '^.+\\.vue$': 'vue-jest',
-    // '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-    // '^.+\\.js$': 'babel-jest'
-  },
-  "snapshotSerializers": [
-    "<rootDir>/node_modules/jest-serializer-vue"
-  ]
-}
-
-// {
+// module.exports = {
+//   verbose: false,
+//   coverageReporters: ['html', 'text-summary'],
 //   moduleFileExtensions: [
 //     'js',
-//     'json',
 //     'vue'
 //   ],
-//   transform: {
-    // '^.+\\.vue$': 'vue-jest',
-    // // '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-    // // '^.+\\.js$': 'babel-jest'
-//   },
 //   moduleNameMapper: {
-//     // '^@/(.*)$': '<rootDir>/src/$1'
+//     '^@/(.*)$': '<rootDir>/src/$1'
+//   },
+//   transform: {
+//     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+//     '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
 //   },
 //   snapshotSerializers: [
-//     'jest-serializer-vue'
+//     '<rootDir>/node_modules/jest-serializer-vue'
 //   ]
 // }
+module.exports = {
+  // testEnvironment: 'node',
+  moduleFileExtensions: [
+    'js',
+    'jsx',
+    'json',
+    'vue',
+  ],
+  transform: {
+    '^.+\\.vue$': 'vue-jest',
+    '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
+    '^.+\\.jsx?$': 'babel-jest',
+  },
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  snapshotSerializers: [
+    'jest-serializer-vue',
+  ],
+  testMatch: [
+    '**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)',
+  ],
+  testURL: 'http://localhost/',
+}

@@ -1,10 +1,10 @@
-var EC = require('elliptic').ec
-var ec = new EC('secp256k1')
+const EC = require('elliptic').ec
+const ec = new EC('secp256k1')
 
 function generateKeyPair() {
-    var key = ec.genKeyPair()
-    var privKey = key.priv.toString('hex')
-    var pubKey = key.getPublic('hex')
+    const key = ec.genKeyPair()
+    const privKey = key.priv.toString('hex')
+    const pubKey = key.getPublic('hex')
     return {
         pubKey,
         privKey

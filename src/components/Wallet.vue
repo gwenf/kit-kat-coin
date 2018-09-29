@@ -8,7 +8,7 @@
         </header>
         <div class="field">
           <p class="control">
-            <button class="button is-success" @click="createNewAddress">
+            <button class="button is-success new-address-button" @click="createNewAddress">
               Create New Address
             </button>
           </p>
